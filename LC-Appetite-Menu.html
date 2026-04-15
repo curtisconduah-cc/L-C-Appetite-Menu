@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L&C Appetite Catering Services — Our Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:    #1A0F02;
+    --brown:   #2C1A06;
+    --gold:    #C8941A;
+    --gold-lt: #F0B429;
+    --red:     #C0392B;
+    --green:   #1A5C2A;
+    --cream:   #FDF6E3;
+    --text:    #2C1A06;
+    --muted:   #7a5c30;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* wood grain bg */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,200,80,0.015) 0px, rgba(255,200,80,0.015) 1px, transparent 1px, transparent 60px),
+      repeating-linear-gradient(180deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 10px);
+    pointer-events:none; z-index:0;
+  }
+
+  .page { position:relative; z-index:1; max-width:480px; margin:0 auto; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(180deg, #0e0700 0%, var(--brown) 100%);
+    padding: 32px 24px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content:'';
+    position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-lt), var(--gold), transparent);
+  }
+
+  .hero-pattern {
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(45deg, rgba(200,148,26,0.04) 0, rgba(200,148,26,0.04) 1px, transparent 1px, transparent 12px);
+    pointer-events:none;
+  }
+
+  /* Logo circle */
+  .logo-wrap {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C8941A, #F0B429);
+    margin: 0 auto 14px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 30px rgba(200,148,26,0.5);
+    font-size: 42px;
+    position: relative; z-index:1;
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%,100% { box-shadow: 0 0 20px rgba(200,148,26,0.4); }
+    50%      { box-shadow: 0 0 40px rgba(200,148,26,0.8); }
+  }
+
+  .hero-sub {
+    font-size: 10px; letter-spacing: 5px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 6px;
+    position:relative; z-index:1;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 900;
+    color: var(--cream); line-height: 1.1;
+    margin-bottom: 4px;
+    position:relative; z-index:1;
+  }
+
+  .hero-tagline {
+    font-size: 11px; color: rgba(253,246,227,0.45);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-style: italic; margin-bottom: 18px;
+    position:relative; z-index:1;
+  }
+
+  .hero-badges {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    position:relative; z-index:1;
+  }
+
+  .badge {
+    background: rgba(200,148,26,0.15);
+    border: 1px solid rgba(200,148,26,0.35);
+    color: var(--gold-lt);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 1px; padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  .badge.red {
+    background: rgba(192,57,43,0.15);
+    border-color: rgba(192,57,43,0.35);
+    color: #e74c3c;
+  }
+
+  /* ===== NAV TABS ===== */
+  .nav-tabs {
+    display: flex;
+    background: #111;
+    border-bottom: 1px solid rgba(200,148,26,0.2);
+    overflow-x: auto; scrollbar-width: none;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-tabs::-webkit-scrollbar { display:none; }
+
+  .nav-tab {
+    flex: 1; min-width: 60px;
+    padding: 13px 6px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 13px; letter-spacing: 1px;
+    color: rgba(253,246,227,0.35);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-tab:hover { color: var(--gold-lt); }
+  .nav-tab.active {
+    color: var(--gold-lt);
+    border-bottom-color: var(--gold-lt);
+    background: rgba(200,148,26,0.08);
+  }
+
+  /* ===== SECTIONS ===== */
+  .section { display: none; background: var(--cream); }
+  .section.active { display: block; }
+
+  /* section header */
+  .sec-header {
+    padding: 20px 20px 0;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .sec-icon { font-size: 22px; }
+
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--text);
+  }
+
+  .sec-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, rgba(200,148,26,0.3), transparent);
+  }
+
+  /* ===== MEAL CARD ===== */
+  .meal-card {
+    margin: 12px 16px 0;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid rgba(200,148,26,0.12);
+    overflow: hidden;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .meal-card::before {
+    content:'';
+    position:absolute; left:0; top:0; bottom:0; width:3px;
+    background: var(--gold); opacity:0;
+    transition: opacity 0.2s;
+  }
+
+  .meal-card:hover { border-color: rgba(200,148,26,0.3); transform: translateX(3px); }
+  .meal-card:hover::before { opacity:1; }
+
+  .meal-card.highlight { border-color: rgba(200,148,26,0.3); }
+  .meal-card.highlight::before { opacity:1; background: var(--red); }
+
+  .meal-body {
+    display: flex; align-items: flex-start;
+    gap: 12px; padding: 14px 16px;
+  }
+
+  .meal-info { flex:1; }
+
+  .meal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700;
+    color: var(--text); margin-bottom: 3px;
+    line-height: 1.2;
+  }
+
+  .meal-desc {
+    font-size: 12px; color: var(--muted);
+    line-height: 1.4; font-weight: 300;
+  }
+
+  .meal-price {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px; color: var(--green);
+    letter-spacing: 1px; white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  .meal-price small {
+    font-size: 11px; font-family: 'DM Sans', sans-serif;
+    color: var(--muted); vertical-align: super;
+  }
+
+  .star-tag {
+    display: inline-block;
+    background: rgba(192,57,43,0.1);
+    border: 1px solid rgba(192,57,43,0.3);
+    color: var(--red);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 10px;
+    margin-left: 6px; vertical-align: middle;
+  }
+
+  .new-tag {
+    display: inline-block;
+    background: rgba(200,148,26,0.15);
+    border: 1px solid rgba(200,148,26,0.4);
+    color: var(--gold);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 10px;
+    margin-left: 6px; vertical-align: middle;
+  }
+
+  /* ===== DAILY SPECIAL CARD ===== */
+  .day-card {
+    margin: 12px 16px 0;
+    border-radius: 10px; overflow: hidden;
+    border: 1px solid rgba(200,148,26,0.15);
+  }
+
+  .day-label {
+    background: var(--green);
+    padding: 7px 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .day-label-text {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 14px; letter-spacing: 3px;
+    color: white;
+  }
+
+  .day-label-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold-lt); flex-shrink:0;
+  }
+
+  .day-label.red-day { background: var(--red); }
+  .day-label.gold-day { background: var(--gold); }
+
+  .day-body {
+    background: white; padding: 12px 16px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .day-meal {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; font-weight: 700; color: var(--text);
+    margin-bottom: 3px;
+  }
+
+  .day-desc { font-size: 11px; color: var(--muted); font-weight: 300; }
+
+  .day-price {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px; color: var(--green);
+    letter-spacing: 1px; white-space: nowrap;
+  }
+
+  /* ===== EXTRAS ===== */
+  .extras-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; padding: 12px 16px;
+  }
+
+  .extra-item {
+    background: white;
+    border: 1px solid rgba(200,148,26,0.12);
+    border-radius: 8px; padding: 10px 12px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .extra-name { font-size: 12px; color: var(--text); font-weight: 500; }
+  .extra-price { font-family: 'Bebas Neue', cursive; font-size: 16px; color: var(--gold); }
+
+  /* ===== JUMBO PACK ===== */
+  .jumbo-card {
+    margin: 12px 16px 0;
+    background: linear-gradient(135deg, var(--dark), #2d1a05);
+    border-radius: 10px; padding: 20px;
+    border: 1px solid rgba(200,148,26,0.3);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .jumbo-card::before {
+    content:'';
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(45deg, rgba(200,148,26,0.03) 0, rgba(200,148,26,0.03) 1px, transparent 1px, transparent 12px);
+  }
+
+  .jumbo-crown { font-size: 40px; margin-bottom: 8px; position:relative; z-index:1; }
+
+  .jumbo-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px; letter-spacing: 4px;
+    background: linear-gradient(180deg, var(--gold-lt), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position:relative; z-index:1;
+  }
+
+  .jumbo-sub {
+    font-size: 12px; color: rgba(253,246,227,0.55);
+    margin: 6px 0 12px; font-style: italic;
+    position:relative; z-index:1;
+  }
+
+  .jumbo-price {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+    color: var(--dark); font-family: 'Bebas Neue', cursive;
+    font-size: 28px; letter-spacing: 2px;
+    padding: 6px 24px; border-radius: 4px;
+    position:relative; z-index:1;
+  }
+
+  /* ===== SHAWARMA SPECIAL ===== */
+  .shawarma-card {
+    margin: 12px 16px 0;
+    background: linear-gradient(135deg, #1a0505, #3d0a0a);
+    border-radius: 10px; padding: 18px;
+    border: 1px solid rgba(192,57,43,0.4);
+    display: flex; gap: 14px; align-items: center;
+  }
+
+  .shawarma-icon { font-size: 40px; flex-shrink:0; }
+
+  .shawarma-info { flex:1; }
+
+  .shawarma-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px; letter-spacing: 2px;
+    color: white; margin-bottom: 4px;
+  }
+
+  .shawarma-desc { font-size: 11px; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+
+  .shawarma-price {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px; color: var(--gold-lt);
+  }
+
+  .free-coke {
+    background: rgba(192,57,43,0.3);
+    border: 1px solid rgba(192,57,43,0.5);
+    color: #ff6b6b; font-size: 9px;
+    font-weight: 700; letter-spacing: 1px;
+    padding: 2px 8px; border-radius: 10px;
+    margin-left: 6px; text-transform: uppercase;
+  }
+
+  /* ===== ORDER BUTTON ===== */
+  .order-section {
+    padding: 20px 16px 8px;
+  }
+
+  .order-btn {
+    display: block; width: 100%;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white; text-decoration: none;
+    border-radius: 50px; padding: 16px;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+    transition: all 0.2s;
+  }
+
+  .order-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37,211,102,0.4); }
+  .order-btn span { font-size: 18px; margin-right: 8px; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--dark);
+    padding: 18px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(200,148,26,0.2);
+  }
+
+  .footer-contact {
+    font-size: 12px; color: rgba(253,246,227,0.5);
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+
+  .footer-contact strong { color: var(--gold-lt); }
+
+  .footer-ig { font-size: 11px; color: rgba(200,148,26,0.5); letter-spacing: 1px; }
+
+  /* bottom spacer */
+  .spacer { height: 24px; background: var(--cream); }
+
+  /* fade in */
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(12px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  .section.active .meal-card,
+  .section.active .day-card,
+  .section.active .jumbo-card,
+  .section.active .shawarma-card,
+  .section.active .extra-item {
+    animation: fadeUp 0.3s ease both;
+  }
+
+  .section.active .meal-card:nth-child(2) { animation-delay: 0.05s; }
+  .section.active .meal-card:nth-child(3) { animation-delay: 0.10s; }
+  .section.active .meal-card:nth-child(4) { animation-delay: 0.15s; }
+  .section.active .meal-card:nth-child(5) { animation-delay: 0.20s; }
+  .section.active .day-card:nth-child(2)  { animation-delay: 0.05s; }
+  .section.active .day-card:nth-child(3)  { animation-delay: 0.10s; }
+  .section.active .day-card:nth-child(4)  { animation-delay: 0.15s; }
+  .section.active .day-card:nth-child(5)  { animation-delay: 0.20s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-pattern"></div>
+    <div class="logo-wrap">🍽️</div>
+    <div class="hero-sub">✦ Tema Community 25 ✦</div>
+    <div class="hero-title">L&C Appetite<br>Catering Services</div>
+    <div class="hero-tagline">Taste of Home, Anytime</div>
+    <div class="hero-badges">
+      <span class="badge">🔥 Hot & Fresh Daily</span>
+      <span class="badge">🚚 Free Delivery 5km</span>
+      <span class="badge red">⏰ 9AM – 7PM</span>
+    </div>
+  </div>
+
+  <!-- NAV TABS -->
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="showTab('allweek')">All Week</div>
+    <div class="nav-tab" onclick="showTab('daily')">Daily</div>
+    <div class="nav-tab" onclick="showTab('specials')">Specials</div>
+    <div class="nav-tab" onclick="showTab('extras')">Extras</div>
+    <div class="nav-tab" onclick="showTab('bundles')">Bundles</div>
+    <div class="nav-tab" onclick="showTab('bulk')">Bulk</div>
+    <div class="nav-tab" onclick="showTab('order')">Order</div>
+  </div>
+
+  <!-- ===== ALL WEEK ===== -->
+  <div class="section active" id="allweek">
+    <div class="sec-header">
+      <span class="sec-icon">🌟</span>
+      <span class="sec-title">Available All Week</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="meal-card">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">Jollof Rice</div>
+          <div class="meal-desc">Party-style jollof with chicken or fish · Coleslaw + chilli sauce</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 50</div>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">Fried Rice</div>
+          <div class="meal-desc">Perfectly seasoned fried rice with chicken or fish · Coleslaw + chilli sauce</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 50</div>
+      </div>
+    </div>
+
+    <div class="meal-card highlight">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">Spicy Goat Meat Jollof / Fried Rice <span class="star-tag">⭐ Special</span></div>
+          <div class="meal-desc">Our signature — tender spicy goat meat · Coleslaw + chilli sauce</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 60</div>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">Banku + Okro Soup</div>
+          <div class="meal-desc">Loaded with beef, smoked fish & wele · A true Ghanaian classic</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 60</div>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">Assorted Spaghetti / Fried Rice / Jollof</div>
+          <div class="meal-desc">Packed with a tasty assortment of proteins & vegetables</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 60</div>
+      </div>
+    </div>
+
+    <!-- Shawarma -->
+    <div class="shawarma-card">
+      <div class="shawarma-icon">🌯</div>
+      <div class="shawarma-info">
+        <div class="shawarma-title">Loaded Shawarma <span class="new-tag">NEW</span></div>
+        <div class="shawarma-desc">Stuffed to the MAX with grilled meat, fresh veggies & special sauce</div>
+        <div class="shawarma-price"><small style="font-size:11px;font-family:'DM Sans';color:rgba(255,255,255,0.4)">GHS</small> 80 <span class="free-coke">+ FREE Coke 🥤</span></div>
+      </div>
+    </div>
+
+    <!-- Jumbo -->
+    <div class="jumbo-card">
+      <div class="jumbo-crown">👑</div>
+      <div class="jumbo-title">JUMBO PACK</div>
+      <div class="jumbo-sub">Same great meals — BIGGER everything!<br>More rice · More protein · Special daily additions</div>
+      <div class="jumbo-price">GHS 90</div>
+    </div>
+
+    <div class="order-section">
+      <a class="order-btn" href="https://wa.me/233543722605?text=Hi%20L%26C%20Appetite!%20I%20want%20to%20place%20an%20order%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">
+        <span>💬</span> Order on WhatsApp
+      </a>
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- ===== DAILY SPECIALS ===== -->
+  <div class="section" id="daily">
+    <div class="sec-header">
+      <span class="sec-icon">📅</span>
+      <span class="sec-title">Daily Specials</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-label">
+        <div class="day-label-dot"></div>
+        <div class="day-label-text">Monday</div>
+      </div>
+      <div class="day-body">
+        <div>
+          <div class="day-meal">Spicy Goat Meat Jollof / Fried Rice</div>
+          <div class="day-desc">Coleslaw + chilli sauce · A Monday must-have!</div>
+        </div>
+        <div class="day-price">GHS 60</div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-label gold-day">
+        <div class="day-label-dot" style="background:white"></div>
+        <div class="day-label-text">Tuesday</div>
+      </div>
+      <div class="day-body">
+        <div>
+          <div class="day-meal">Spicy Pork + Fried Yam</div>
+          <div class="day-desc">Served with chilli sauce · Tuesday treat!</div>
+        </div>
+        <div class="day-price">GHS 60</div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-label red-day">
+        <div class="day-label-dot"></div>
+        <div class="day-label-text">Wednesday</div>
+      </div>
+      <div class="day-body">
+        <div>
+          <div class="day-meal">Champion Angwa Mo</div>
+          <div class="day-desc">Omelette + sausage + chicken or beef · Street Day!</div>
+        </div>
+        <div class="day-price">GHS 60</div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-label">
+        <div class="day-label-dot"></div>
+        <div class="day-label-text">Thursday</div>
+      </div>
+      <div class="day-body">
+        <div>
+          <div class="day-meal">Goat / Fish / Chicken Light Soup</div>
+          <div class="day-desc">Rich homestyle light soup · With Fufu or Rice</div>
+        </div>
+        <div class="day-price">GHS 60</div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-label gold-day">
+        <div class="day-label-dot" style="background:white"></div>
+        <div class="day-label-text">Friday 🎉</div>
+      </div>
+      <div class="day-body">
+        <div>
+          <div class="day-meal">Goat / Fish / Chicken Light Soup</div>
+          <div class="day-desc">End the week right · With Fufu or Rice</div>
+        </div>
+        <div class="day-price">GHS 60</div>
+      </div>
+    </div>
+
+    <div class="order-section">
+      <a class="order-btn" href="https://wa.me/233543722605?text=Hi%20L%26C%20Appetite!%20I%20want%20to%20place%20an%20order%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">
+        <span>💬</span> Order on WhatsApp
+      </a>
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- ===== SPECIALS ===== -->
+  <div class="section" id="specials">
+    <div class="sec-header">
+      <span class="sec-icon">✨</span>
+      <span class="sec-title">Our Specials</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="shawarma-card" style="margin:12px 16px 0">
+      <div class="shawarma-icon">🌯</div>
+      <div class="shawarma-info">
+        <div class="shawarma-title">Loaded Shawarma <span class="new-tag">NEW</span></div>
+        <div class="shawarma-desc">Stuffed to the MAX · Grilled meat + fresh veggies + special sauce</div>
+        <div class="shawarma-price"><small style="font-size:11px;font-family:'DM Sans';color:rgba(255,255,255,0.4)">GHS</small> 80 <span class="free-coke">+ FREE Coke 🥤</span></div>
+      </div>
+    </div>
+
+    <div class="jumbo-card" style="margin-top:12px">
+      <div class="jumbo-crown">👑</div>
+      <div class="jumbo-title">JUMBO PACK</div>
+      <div class="jumbo-sub">
+        Same great meals — BIGGER everything!<br>
+        Extra rice · Extra protein · Special daily additions<br><br>
+        <span style="color:rgba(253,246,227,0.4);font-size:11px">Available on any meal, any day of the week</span>
+      </div>
+      <div class="jumbo-price">GHS 90</div>
+    </div>
+
+    <div style="padding:16px">
+      <div style="background:white;border-radius:10px;border:1px solid rgba(200,148,26,0.15);padding:16px">
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px">🎂 Birthday Party Package</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px">
+          Flexible birthday catering for any group size!<br>
+          Priced per person — you choose how many people.
+        </div>
+        <div style="font-size:12px;color:var(--text);font-weight:500;margin-bottom:4px">From GHS 50 per person</div>
+        <div style="font-size:11px;color:var(--muted)">⚠️ 48 hours advance notice required</div>
+      </div>
+    </div>
+
+    <div class="order-section" style="padding-top:4px">
+      <a class="order-btn" href="https://wa.me/233543722605?text=Hi%20L%26C%20Appetite!%20I%20want%20to%20enquire%20about%20a%20special%20order%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">
+        <span>💬</span> Enquire on WhatsApp
+      </a>
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- ===== EXTRAS ===== -->
+  <div class="section" id="extras">
+    <div class="sec-header">
+      <span class="sec-icon">➕</span>
+      <span class="sec-title">Add to Any Meal</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="extras-grid">
+      <div class="extra-item">
+        <span class="extra-name">🍗 Chicken / Fish / Beef</span>
+        <span class="extra-price">20</span>
+      </div>
+      <div class="extra-item">
+        <span class="extra-name">🥩 Gizzard (4pcs)</span>
+        <span class="extra-price">10</span>
+      </div>
+      <div class="extra-item">
+        <span class="extra-name">🍖 Wings (4pcs)</span>
+        <span class="extra-price">20</span>
+      </div>
+      <div class="extra-item">
+        <span class="extra-name">🍳 Omelette</span>
+        <span class="extra-price">5</span>
+      </div>
+      <div class="extra-item">
+        <span class="extra-name">🌭 Sausage (1pc)</span>
+        <span class="extra-price">5</span>
+      </div>
+      <div class="extra-item">
+        <span class="extra-name">🐐 Goat Meat</span>
+        <span class="extra-price">25</span>
+      </div>
+      <div class="extra-item" style="grid-column:1/-1">
+        <span class="extra-name">🍚 Rice — Any Type</span>
+        <span class="extra-price">30</span>
+      </div>
+    </div>
+
+    <div style="margin:8px 16px 0;background:rgba(200,148,26,0.08);border:1px solid rgba(200,148,26,0.2);border-radius:8px;padding:12px 14px">
+      <div style="font-size:11px;color:var(--muted);line-height:1.5">
+        All prices in GHS · Tell us your extras when ordering on WhatsApp 😊
+      </div>
+    </div>
+
+    <div class="order-section">
+      <a class="order-btn" href="https://wa.me/233543722605?text=Hi%20L%26C%20Appetite!%20I%20want%20to%20place%20an%20order%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">
+        <span>💬</span> Order on WhatsApp
+      </a>
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- ===== BUNDLES ===== -->
+  <div class="section" id="bundles">
+    <div class="sec-header">
+      <span class="sec-icon">🎁</span>
+      <span class="sec-title">Bundle Deals</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div style="margin:8px 16px 0;background:rgba(200,148,26,0.08);border:1px solid rgba(200,148,26,0.2);border-radius:8px;padding:10px 14px">
+      <div style="font-size:11px;color:var(--muted);line-height:1.5">
+        💡 Order a bundle and save more! All prices below are direct order prices.
+      </div>
+    </div>
+
+    <!-- Bundle 1 -->
+    <div class="meal-card" style="margin-top:12px">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">🍽️ The Couple's Deal</div>
+          <div class="meal-desc">2x Jollof or Fried Rice (chicken/fish/beef) + 2x Drinks · Perfect for two!</div>
+          <div style="margin-top:6px;font-size:11px;color:var(--green);font-weight:600">Saves GHS 20 vs ordering separately</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 130</div>
+      </div>
+    </div>
+
+    <!-- Bundle 2 -->
+    <div class="meal-card">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">🏢 The Office Lunch Deal</div>
+          <div class="meal-desc">5x Jollof or Fried Rice (chicken/fish/beef) · Feed the whole team!</div>
+          <div style="margin-top:6px;font-size:11px;color:var(--green);font-weight:600">Saves GHS 20 vs ordering separately</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 230</div>
+      </div>
+    </div>
+
+    <!-- Bundle 3 -->
+    <div class="meal-card highlight">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">👑 The Boss Combo</div>
+          <div class="meal-desc">1x Spicy Goat Jollof or Fried Rice + 1x Loaded Shawarma + 1x Drink · One person, full experience!</div>
+          <div style="margin-top:6px;font-size:11px;color:var(--green);font-weight:600">Saves GHS 20 vs ordering separately</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 170</div>
+      </div>
+    </div>
+
+    <!-- Bundle 4 -->
+    <div class="meal-card">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">🇬🇭 The Ghanaian Classic Combo</div>
+          <div class="meal-desc">1x Banku + Okro Soup + 1x Red Red/Gob3 + 1x Drink · For the culture lovers!</div>
+          <div style="margin-top:6px;font-size:11px;color:var(--green);font-weight:600">Saves GHS 15 vs ordering separately</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 115</div>
+      </div>
+    </div>
+
+    <!-- Bundle 5 -->
+    <div class="meal-card">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">👨‍👩‍👧‍👦 The Family Feast</div>
+          <div class="meal-desc">3x Jumbo Pack — choose any base for each · Enough for 3-4 people!</div>
+          <div style="margin-top:6px;font-size:11px;color:var(--green);font-weight:600">Saves GHS 20 vs ordering separately</div>
+        </div>
+        <div class="meal-price"><small>GHS</small> 250</div>
+      </div>
+    </div>
+
+    <!-- Birthday -->
+    <div class="meal-card" style="border-color:rgba(200,148,26,0.3)">
+      <div class="meal-body">
+        <div class="meal-info">
+          <div class="meal-name">🎂 Birthday Party Package</div>
+          <div class="meal-desc">Fully flexible — priced per person from GHS 50. You choose the number of people and meal options. Mix and match!</div>
+          <div style="margin-top:6px;font-size:11px;color:var(--red);font-weight:600">⚠️ 48 hours advance notice required</div>
+        </div>
+        <div style="text-align:right;padding-top:2px">
+          <div style="font-family:'Bebas Neue',cursive;font-size:14px;color:var(--green);white-space:nowrap">FROM</div>
+          <div style="font-family:'Bebas Neue',cursive;font-size:18px;color:var(--green);white-space:nowrap"><small style="font-size:10px;font-family:'DM Sans',sans-serif;color:var(--muted);vertical-align:super">GHS</small> 50<small style="font-size:10px;font-family:'DM Sans',sans-serif;color:var(--muted)">/person</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-section">
+      <a class="order-btn" href="https://wa.me/233543722605?text=Hi%20L%26C%20Appetite!%20I%20want%20to%20order%20a%20bundle%20deal%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">
+        <span>💬</span> Order a Bundle on WhatsApp
+      </a>
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- ===== BULK ===== -->
+  <div class="section" id="bulk">
+    <div class="sec-header">
+      <span class="sec-icon">🥘</span>
+      <span class="sec-title">Bulk Soups & Stews</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div style="margin:12px 16px 0">
+      <div style="background:linear-gradient(135deg,#0e0700,#2d1a05);border-radius:12px;padding:24px;text-align:center;border:1px solid rgba(200,148,26,0.3)">
+        <div style="font-size:40px;margin-bottom:12px">🍲</div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--cream);margin-bottom:8px">Bulk Soups & Stews</div>
+        <div style="font-size:12px;color:rgba(253,246,227,0.55);line-height:1.7;margin-bottom:18px">
+          Need soups or stews in large quantities?<br>
+          We've got you covered! Perfect for events,<br>
+          gatherings, offices and more. 😊
+        </div>
+        <div style="background:rgba(200,148,26,0.15);border:1px solid rgba(200,148,26,0.3);border-radius:8px;padding:12px;margin-bottom:18px">
+          <div style="font-size:11px;color:var(--gold-lt);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:4px">Pricing & Details</div>
+          <div style="font-size:12px;color:rgba(253,246,227,0.6);line-height:1.5">Call us to discuss quantities,<br>options and pricing</div>
+        </div>
+        <a class="order-btn" href="https://wa.me/233543722605?text=Hi%20L%26C%20Appetite!%20I%20want%20to%20enquire%20about%20bulk%20soups%20and%20stews%20%F0%9F%8D%B2" target="_blank">
+          <span>💬</span> Call / WhatsApp to Discuss
+        </a>
+      </div>
+    </div>
+
+    <div style="padding:16px">
+      <div style="background:white;border-radius:10px;border:1px solid rgba(200,148,26,0.12);padding:16px">
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px">📞 Get in Touch</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.8">
+          📱 <strong style="color:var(--text)">0543722605</strong><br>
+          📱 <strong style="color:var(--text)">0260884550</strong><br>
+          ⏰ 9:00AM – 7:00PM daily
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- ===== ORDER ===== -->
+  <div class="section" id="order">
+    <div style="padding:20px 16px">
+
+      <div style="background:linear-gradient(135deg,#0e0700,#2d1a05);border-radius:12px;padding:24px;text-align:center;border:1px solid rgba(200,148,26,0.3);margin-bottom:16px">
+        <div style="font-size:36px;margin-bottom:10px">🍽️</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--cream);margin-bottom:6px">Ready to Order?</div>
+        <div style="font-size:12px;color:rgba(253,246,227,0.5);margin-bottom:18px;line-height:1.5">
+          Send us a WhatsApp message and we'll confirm your order right away!
+        </div>
+        <a class="order-btn" href="https://wa.me/233543722605?text=Hi%20L%26C%20Appetite!%20I%20want%20to%20place%20an%20order%20%F0%9F%8D%BD%EF%B8%8F" target="_blank" style="display:inline-block;width:auto;padding:14px 32px">
+          <span>💬</span> 0543722605
+        </a>
+      </div>
+
+      <div style="background:white;border-radius:10px;border:1px solid rgba(200,148,26,0.12);padding:16px;margin-bottom:12px">
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px">📞 Contact Us</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.8">
+          📱 <strong style="color:var(--text)">0543722605</strong><br>
+          📱 <strong style="color:var(--text)">0260884550</strong><br>
+          📍 Tema Community 25<br>
+          📸 @appetite_gh<br>
+          ⏰ 9:00AM – 7:00PM daily
+        </div>
+      </div>
+
+      <div style="background:white;border-radius:10px;border:1px solid rgba(200,148,26,0.12);padding:16px;margin-bottom:12px">
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px">🚚 Delivery Info</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.8">
+          ✅ <strong style="color:var(--green)">FREE</strong> delivery within 5km<br>
+          📦 Beyond 5km: <strong style="color:var(--text)">GHS 5 – 20</strong><br>
+          🕐 Evening delivery available — just tell us your preferred time!<br>
+          ⚠️ Pre-order by 10AM to guarantee your meal
+        </div>
+      </div>
+
+      <div style="background:white;border-radius:10px;border:1px solid rgba(200,148,26,0.12);padding:16px">
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px">🛵 Also on Bolt Food</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5">
+          Search <strong style="color:var(--text)">"L&C Appetite Catering Services"</strong> on the Bolt Food app to order. Please note that Bolt Food prices may vary slightly from our standard prices above.
+        </div>
+      </div>
+
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-contact">
+      <strong>L&C Appetite Catering Services</strong><br>
+      Tema Community 25 · 0543722605 / 0260884550
+    </div>
+    <div class="footer-ig">📸 @appetite_gh</div>
+  </div>
+
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
+</script>
+</body>
+</html>
