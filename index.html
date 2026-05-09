@@ -1,336 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C0LFWPCXJR"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){dataLayer.push(arguments);} 
   gtag('js', new Date());
   gtag('config', 'G-C0LFWPCXJR');
 </script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L&C Appetite Catering Services</title>
-
+<title>L&C Appetite Catering Services — Smart Menu System</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-  --dark:#1A0F02;
-  --cream:#FDF6E3;
-  --gold:#C8941A;
-  --green:#1A5C2A;
-  --muted:#7a5c30;
+  --dark:#120a02;--gold:#C8941A;--gold2:#F0B429;--cream:#FDF6E3;
+  --text:#2C1A06;--muted:#7a5c30;--green:#1A5C2A;--red:#C0392B;
 }
-
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;background:var(--dark);}
-
-.page{max-width:480px;margin:auto;background:var(--dark);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:DM Sans;background:var(--dark);color:var(--text)}
+.page{max-width:520px;margin:auto;background:var(--cream);min-height:100vh}
 
 /* HERO */
-.hero{
-  padding:30px;
-  text-align:center;
-  background:linear-gradient(180deg,#0e0700,#2C1A06);
-}
-.hero h1{
-  color:var(--cream);
-  font-family:'Playfair Display';
-}
-.hero p{
-  color:var(--gold);
-  font-size:12px;
-}
+.hero{padding:28px;text-align:center;background:linear-gradient(180deg,#0e0700,#2d1a05);color:white}
+.logo{font-size:40px}
+.hero h1{font-family:Playfair Display;font-size:26px;margin-top:10px}
+.hero p{font-size:11px;opacity:.6}
 
-/* MENU HEADER */
-.sec-header{
-  padding:16px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.sec-title{
-  font-family:'Playfair Display';
-  color:var(--cream);
-}
-.sec-subtitle{
-  font-size:11px;
-  color:rgba(255,255,255,0.5);
-}
+/* QUICK ACTION BAR */
+.quick{display:flex;overflow:auto;gap:8px;padding:10px;background:#111}
+.quick a{white-space:nowrap;text-decoration:none;color:var(--gold2);font-size:11px;background:rgba(200,148,26,.15);padding:6px 10px;border-radius:20px}
+
+/* NAV */
+.nav{display:flex;background:#111;position:sticky;top:0}
+.nav button{flex:1;padding:12px;border:0;background:none;color:#aaa;font-weight:600}
+.nav button.active{color:var(--gold2);border-bottom:2px solid var(--gold2)}
+
+.section{display:none;padding-bottom:40px}
+.section.active{display:block}
+
+/* SEARCH */
+.search{padding:10px}
+.search input{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd}
 
 /* CARD */
-.meal-card{
-  background:#fff;
-  margin:10px 12px;
-  border-radius:10px;
-  padding:12px;
-  border-left:4px solid var(--gold);
-}
+.card{background:white;margin:10px;border-radius:10px;padding:12px;position:relative}
+.name{font-weight:700}
+.desc{font-size:12px;color:var(--muted)}
+.price{float:right;font-family:Bebas Neue;font-size:20px;color:var(--green)}
+.badge{position:absolute;top:8px;right:8px;background:var(--red);color:white;font-size:9px;padding:3px 6px;border-radius:10px}
 
-.meal-body{
-  display:flex;
-  justify-content:space-between;
-}
+/* SHAWARMA */
+.shawarma{margin:10px;background:#2a0a0a;color:white;padding:12px;border-radius:10px}
+.grid{display:flex;gap:10px}
+.box{flex:1;background:rgba(255,255,255,.08);padding:10px;border-radius:8px;text-align:center}
 
-.meal-name{
-  font-family:'Playfair Display';
-  font-weight:700;
-  font-size:15px;
-}
+/* ORDER BUTTON */
+.order{display:block;margin:12px;text-align:center;background:#25D366;color:white;padding:14px;border-radius:30px;text-decoration:none}
 
-.meal-desc{
-  font-size:12px;
-  color:var(--muted);
-}
-
-.price{
-  font-family:'Bebas Neue';
-  font-size:22px;
-  color:var(--green);
-}
-
-/* BUTTONS */
-.quick{
-  display:inline-block;
-  margin-top:8px;
-  padding:6px 10px;
-  background:var(--green);
-  color:#fff;
-  border-radius:20px;
-  font-size:11px;
-  text-decoration:none;
-}
-
-/* BEST SELLER BADGE */
-.badge{
-  font-size:10px;
-  background:orange;
-  padding:2px 6px;
-  border-radius:6px;
-  margin-left:6px;
-}
-
-/* ORDER BUTTONS */
-.order-section{
-  padding:16px;
-}
-
-.order-btn{
-  display:block;
-  padding:14px;
-  margin-bottom:10px;
-  text-align:center;
-  border-radius:30px;
-  color:#fff;
-  text-decoration:none;
-}
-
-.whatsapp{background:#25D366;}
-.bolt{background:#34C759;}
-.hubtel{background:#E63946;}
-
+/* ADMIN */
+.admin{padding:10px;margin:10px;background:#fff;border-radius:10px}
+.admin input{width:100%;padding:8px;margin:5px 0}
+.admin button{padding:8px;width:100%}
+.small{font-size:11px;color:#777}
 </style>
 </head>
-
 <body>
-
 <div class="page">
 
-<!-- HERO -->
 <div class="hero">
+  <div class="logo">🍽️</div>
   <h1>L&C Appetite</h1>
-  <p>Digital Menu System</p>
+  <p>Smart Menu System</p>
+</div>
+
+<div class="quick">
+  <a href="#menu">Menu</a>
+  <a href="#">WhatsApp</a>
+  <a href="#">Bolt</a>
+  <a href="#">Hubtel</a>
+</div>
+
+<div class="nav">
+  <button class="active" onclick="show('menu')">Menu</button>
+  <button onclick="show('specials')">Deals</button>
+  <button onclick="show('admin')">Admin</button>
 </div>
 
 <!-- MENU -->
-<div class="sec-header">
-  <div>
-    <div class="sec-title">Our Menu</div>
-    <div class="sec-subtitle">Auto best sellers · Live tracking</div>
+<div id="menu" class="section active">
+
+<div class="search">
+  <input placeholder="Search meals..." onkeyup="filterMenu(this.value)">
+</div>
+
+<div id="menuList"></div>
+
+<div class="shawarma">
+  <b>Loaded Shawarma + FREE Coke</b>
+  <div class="grid">
+    <div class="box">Standard<br>60</div>
+    <div class="box">Fully Loaded<br>80</div>
   </div>
 </div>
 
-<!-- MENU ITEMS -->
-
-<div id="menuContainer">
-
-<!-- JOLLOF -->
-<div class="meal-card" data-meal="Jollof Rice">
-  <div class="meal-body">
-    <div>
-      <div class="meal-name">Jollof Rice <span class="auto-badge"></span></div>
-      <div class="meal-desc">Chicken or fish + coleslaw</div>
-
-      <a class="quick" href="https://wa.me/233543722605?text=Jollof%20Rice"
-         onclick="trackMeal('Jollof Rice')">Quick Order</a>
-    </div>
-    <div class="price">50</div>
-  </div>
-</div>
-
-<!-- FRIED RICE -->
-<div class="meal-card" data-meal="Fried Rice">
-  <div class="meal-body">
-    <div>
-      <div class="meal-name">Fried Rice <span class="auto-badge"></span></div>
-      <div class="meal-desc">Chicken or fish + coleslaw</div>
-
-      <a class="quick" href="https://wa.me/233543722605?text=Fried%20Rice"
-         onclick="trackMeal('Fried Rice')">Quick Order</a>
-    </div>
-    <div class="price">50</div>
-  </div>
-</div>
-
-<!-- SPICY GOAT -->
-<div class="meal-card" data-meal="Goat Rice">
-  <div class="meal-body">
-    <div>
-      <div class="meal-name">Spicy Goat Rice <span class="auto-badge"></span></div>
-      <div class="meal-desc">Spicy goat meat + sauce</div>
-
-      <a class="quick" href="https://wa.me/233543722605?text=Goat%20Rice"
-         onclick="trackMeal('Goat Rice')">Quick Order</a>
-    </div>
-    <div class="price">60</div>
-  </div>
-</div>
-
-<!-- BEEF -->
-<div class="meal-card" data-meal="Beef Rice">
-  <div class="meal-body">
-    <div>
-      <div class="meal-name">Spicy Beef Rice <span class="auto-badge"></span></div>
-      <div class="meal-desc">Rich beef + chilli sauce</div>
-
-      <a class="quick" href="https://wa.me/233543722605?text=Beef%20Rice"
-         onclick="trackMeal('Beef Rice')">Quick Order</a>
-    </div>
-    <div class="price">60</div>
-  </div>
-</div>
-
-<!-- NOODLES -->
-<div class="meal-card" data-meal="Noodles">
-  <div class="meal-body">
-    <div>
-      <div class="meal-name">Assorted Noodles <span class="auto-badge"></span></div>
-      <div class="meal-desc">Mixed protein noodles</div>
-
-      <a class="quick" href="https://wa.me/233543722605?text=Noodles"
-         onclick="trackMeal('Noodles')">Quick Order</a>
-    </div>
-    <div class="price">60</div>
-  </div>
-</div>
-
-<!-- SHAWARMA -->
-<div class="meal-card" data-meal="Shawarma">
-  <div class="meal-body">
-    <div>
-      <div class="meal-name">Shawarma <span class="auto-badge"></span></div>
-      <div class="meal-desc">Loaded + free drink</div>
-
-      <a class="quick" href="https://wa.me/233543722605?text=Shawarma"
-         onclick="trackMeal('Shawarma')">Quick Order</a>
-    </div>
-    <div class="price">60</div>
-  </div>
-</div>
-
-<!-- ANGWA MO -->
-<div class="meal-card" data-meal="Angwa Mo">
-  <div class="meal-body">
-    <div>
-      <div class="meal-name">Champion Angwa Mo <span class="auto-badge"></span></div>
-      <div class="meal-desc">Rice + eggs + meat combo</div>
-
-      <a class="quick" href="https://wa.me/233543722605?text=Angwa%20Mo"
-         onclick="trackMeal('Angwa Mo')">Quick Order</a>
-    </div>
-    <div class="price">60</div>
-  </div>
-</div>
+<a class="order" href="https://wa.me/233543722605">Order on WhatsApp</a>
 
 </div>
 
-<!-- ORDER PLATFORMS -->
-<div class="order-section">
+<!-- SPECIALS -->
+<div id="specials" class="section">
+<div class="card"><div class="name">Boss Combo</div><div class="desc">Goat rice + shawarma + drink</div><div class="price">170</div></div>
+<div class="card"><div class="name">Couple Deal</div><div class="desc">2 meals + drinks</div><div class="price">130</div></div>
+</div>
 
-<a class="order-btn whatsapp"
-href="https://wa.me/233543722605"
-onclick="gtag('event','whatsapp_click');">
-WhatsApp Order
-</a>
+<!-- ADMIN -->
+<div id="admin" class="section">
+<div class="admin">
+<h3>Menu Control Panel</h3>
+<p class="small">Mark items as best sellers or update menu dynamically</p>
 
-<a class="order-btn bolt"
-href="https://food.bolt.eu/en/137/p/198991-lc-appetite-catering-services"
-onclick="gtag('event','bolt_click');">
-Bolt Food
-</a>
+<input id="itemName" placeholder="Item Name">
+<input id="itemPrice" placeholder="Price">
+<button onclick="addItem()">Add Item</button>
 
-<a class="order-btn hubtel"
-href="https://qc.hbtl.co/mAcHrfZQ2"
-onclick="gtag('event','hubtel_click');">
-Hubtel
-</a>
-
+<button onclick="resetBestSellers()">Reset Best Sellers</button>
+</div>
 </div>
 
 </div>
 
 <script>
+let menu = [
+  {name:"Jollof Rice",desc:"Chicken/Fish + coleslaw",price:50,best:true},
+  {name:"Fried Rice",desc:"Chicken/Fish + veggies",price:50,best:true},
+  {name:"Spicy Beef Rice",desc:"Rich spicy beef",price:60,best:false},
+  {name:"Goat Meat Rice",desc:"Tender goat meat",price:60,best:false},
+  {name:"Assorted Noodles",desc:"Egg, sausage, beef",price:55,best:false}
+];
 
-/* =========================
-   AUTO BEST SELLER SYSTEM
-========================= */
-
-function trackMeal(meal){
-
-  // Google Analytics
-  gtag('event','meal_click',{meal:meal});
-
-  // Local storage tracking
-  let data = JSON.parse(localStorage.getItem('mealStats') || '{}');
-
-  data[meal] = (data[meal] || 0) + 1;
-
-  localStorage.setItem('mealStats', JSON.stringify(data));
-
-  updateBestSellers();
-}
-
-/* Determine top 3 meals */
-function updateBestSellers(){
-
-  let data = JSON.parse(localStorage.getItem('mealStats') || '{}');
-
-  let sorted = Object.entries(data).sort((a,b)=>b[1]-a[1]);
-
-  let top = sorted.slice(0,3).map(i=>i[0]);
-
-  document.querySelectorAll('.meal-card').forEach(card=>{
-
-    let meal = card.getAttribute('data-meal');
-
-    let badge = card.querySelector('.auto-badge');
-
-    if(top.includes(meal)){
-      badge.innerHTML = '🔥 BEST SELLER';
-    } else {
-      badge.innerHTML = '';
-    }
-
+function render(){
+  let html="";
+  menu.forEach((m,i)=>{
+    html+=`<div class='card'>${m.best?"<div class='badge'>BEST</div>":""}<div class='name'>${m.name}</div><div class='desc'>${m.desc}</div><div class='price'>${m.price}</div></div>`;
   });
-
+  document.getElementById("menuList").innerHTML=html;
+  localStorage.setItem("menu",JSON.stringify(menu));
 }
 
-updateBestSellers();
+function filterMenu(v){
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display=c.innerText.toLowerCase().includes(v.toLowerCase())?"block":"none";
+  });
+}
 
+function addItem(){
+  let n=document.getElementById("itemName").value;
+  let p=document.getElementById("itemPrice").value;
+  if(!n||!p)return;
+  menu.push({name:n,desc:"Custom item",price:p,best:false});
+  render();
+}
+
+function resetBestSellers(){
+  menu.forEach(m=>m.best=false);
+  render();
+}
+
+function show(id){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+render();
 </script>
 
 </body>
